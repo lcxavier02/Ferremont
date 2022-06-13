@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="all.css" />
+
+    <script src="jquery-3.6.0.js"></script>
+    <script src="main.js"></script>
+    <title>Iniciar sesión</title>
+  </head>
+
+  <body>
+    <header class="w-100 justify-content-around">
+      <!--Inicio menu lateral desplegable-->
+      <div>
+        <span id="boton-menu" class="fa fa-bars"></span>
+
+        <nav class="menu-nav">
+          <ul class="menu">
+            <li class="titulo-menu">Todas las secciones</li>
+
+            <li>
+              <a href="/"
+                ><img
+                  class="icono-menu"
+                  src="icons/home.svg"
+                  width="40"
+                  height="40"
+                />
+                Inicio</a
+              >
+            </li>
+
+            <li class="item-submenu" menu="1">
+              <a href="productos.ejs"
+                ><img
+                  class="icono-menu"
+                  src="icons/bag.svg"
+                  width="40"
+                  height="40"
+                />
+                Productos</a
+              >
+
+              <!--Inicio submenu-->
+              <ul class="submenu">
+                <li class="titulo-menu">
+                  <img
+                    class="icono-menu"
+                    src="icons/bag.svg"
+                    width="40"
+                    height="40"
+                  />
+                  Productos
+                </li>
+                <li class="atras">Atrás</li>
+
+                <li><a href="#">Tornillos</a></li>
+                <li><a href="#">Cables</a></li>
+                <li><a href="#">Etc</a></li>
+              </ul>
+              <!--Fin submenu-->
+            </li>
+
+            <li>
+              <a href="#"
+                ><img
+                  class="icono-menu"
+                  src="icons/sobre-nosotros(1).svg"
+                  width="50"
+                  height="50"
+                />Sobre nosotros</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!--Fin menu lateral desplegable-->
+
+      <!--Inicio logo-->
+      <div class="logo">
+        <a href="/"
+          ><img
+            src="images/Recurso 2.svg"
+            alt="Logo Ferremont"
+            width="250"
+            height="60"
+        /></a>
+      </div>
+      <!--Fin logo-->
+
+      <!--Incio buscador-->
+      <div class="input-group rounded w-25">
+        <form action="/buscar" method="GET" class="w-100 d-flex">
+          <input type="search" class="form-control rounded" placeholder="Buscar" name="buscar" aria-label="Search" aria-describedby="search-addon" />
+          <span class="input-group-text border-0 bg-transparent" id="search-addon">
+            <i class="fas fa-search"></i>
+          </span>
+        </form>
+      </div>
+      <!--Fin buscador-->
+
+      <!--Inicio de cuentas-->
+      <% if (login) { %>
+        <div class="cuenta d-none">
+          <a href="login.ejs"
+            ><img class="icono-usuario" src="icons/usuario.svg"
+          /></a>
+          <div class="linea-vertical"></div>
+          <a href="login.ejs"><h6>Iniciar sesión</h6></a>
+          <div class="linea-vertical"></div>
+          <a href="register.ejs"><h6>Registrarse</h6></a>
+          <div class="linea-vertical"></div>
+        </div>
+        <div class="dropdown">
+          <img data-toggle="dropdown" id="dropdownMenuButton" class="icono-usuario dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="icons/usuario.svg" />
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="col-lg-12 col-md-12 mt-0">
+              <h6 class="text-center bg-secondary bg-gradient text-white h-100">Usuario: <%= name %></h6>
+            </div>
+            <a class="btn btn-danger btn-block w-100 h-100" href="/logout">Logout</a>
+          </div>
+        </div>
+      <% }else{ %>
+      <div class="cuenta">
+        <div class="linea-vertical"></div>
+        <a href="login.ejs"><h6>Iniciar sesión</h6></a>
+        <div class="linea-vertical"></div>
+        <a href="register.ejs"><h6>Registrarse</h6></a>
+        <div class="linea-vertical"></div>
+      </div>
+      <% } %>
+      <!--Fin de cuentas-->
+
+      <!--Inicio carrito-->
+      <div class="carrito dropdown">
+        <img data-toggle="dropdown" id="dropdownMenuButton" class="icono-carrito dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="icons/carrito-de-compras(1).svg"
+        />
+
+        <div id="carrito" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <table id="lista-carrito" class="table">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <a href="#" id="procesar-pedido" class="btn btn-primary btn-block w-100 mb-2">Procesar pedido</a>
+
+          <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block w-100">Vaciar carrito</a>
+        </div>
+      </div>
+      <!--Fin carrito-->
+    </header>
+
+    <section class="container-all">
+      <div class="container-access">
+        <div class="log-section">
+          <h3>Continuar como invitado</h3>
+          <p>
+            Al continuar de esta manera no es necesario la realización de una
+            cuenta, si no que, puedes comprar sin necesidad de inciar sesión
+            como usuario.
+          </p>
+          <div class="col-xs-12 col-lg-9">
+            <a class="btn btn-primary btn-block w-100 text-white text-decoration-none rounded-pill" href="/">Continuar</a>
+          </div>
+        </div>
+
+        <div class="linea-sep"></div>
+
+        <div class="log-section">
+          <h3 class="mb-25 mt-100">Iniciar sesión</h3>
+          <form method="POST" action="/auth">
+            <div class="form-group w-100 row mt-50">
+              <label for="user" class="col-sm-2 col-form-label">Usuario</label>
+              <input type="text" name="nombre_usuario" id="user" placeholder="Usuario" />
+            </div>
+            
+            <div class="form-group w-100 row">
+              <label for="contra" class="col-sm-2 col-form-label">Contraseña</label>
+              <input type="password" id="contra" name="contraseña" placeholder="Contraseña" />
+            </div>
+            
+            <a href="register.ejs">¿No tienes una cuenta aún?</a>
+
+            <input type="submit" value="Ingresar" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <!--Inicio info. Ferremont-->
+      <div class="info-ferremont">
+        <h5 class="mb-3">Informacion para el contacto</h5>
+        <h6 class="mb-3">Numero: </h6>
+        <h6 class="mb-3 text-primary"><%=numberF%></h6>
+        <h6 class="mb-3">Correo: </h6>
+        <a href="#"><h6 class="mb-3 text-primary"><%=mailF%></h6></a>
+        <h6 class="mb-3">Ubicacion: </h6>
+        <h6 class="text-primary"><%=locationF%></h6>
+      </div>
+
+      <div class="redes">
+        <a href="https://www.facebook.com/ferreteriaferremont"><img class="redes-icon" src="icons/facebook(1).svg" /></a>
+        <a href="https://web.whatsapp.com/"><img class="redes-icon" src="icons/whatsapp(1).svg" /></a>
+        <a href="https://mail.google.com/mail/u/1/?ogbl#"><img class="redes-icon" src="icons/gmail.svg" /></a>
+      </div>
+      <!--Fin info. Ferremont-->
+    </footer>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <% if(typeof alert != "undefined") { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle %>',
+          text: '<%= alertMessage %>',
+          icon: '<%= alertIcon %>',
+          showConfirmButton: <%= showConfirmButton %>,
+          timer: <%= time %>
+        }).then(() =>{
+          window.location = '/<%= ruta %>'
+        });
+      </script>
+    <% } %>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="productosLS.js"></script>
+    <script src="mostrarLS.js"></script>
+  </body>
+</html>

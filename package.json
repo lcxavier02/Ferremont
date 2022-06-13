@@ -1,0 +1,30 @@
+{
+  "name": "tiendaonline",
+  "version": "1.0.0",
+  "description": "Tienda Online de Ferremont",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "luisvelazquez98271@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "consolidate": "^0.16.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-myconnection": "^1.0.4",
+    "express-session": "^1.17.1",
+    "mercadopago": "^1.5.7",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "stripe": "^8.145.0",
+    "sweetalert2": "^10.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
